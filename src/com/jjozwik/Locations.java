@@ -1,5 +1,7 @@
 package com.jjozwik;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +12,29 @@ import java.util.Set;
  */
 public class Locations implements Map<Integer, Location> {
     private static Map<Integer, Location> locations = new HashMap<Integer, Location>();
+
+    public static void main(String[] args) throws IOException {
+
+        try(FileWriter locFile =  new FileWriter("locations.txt")){
+            for (Location location : locations.values()){
+                locFile.write(location.getLocationID() + "," + location.getDescription() + "\n");
+            }
+        }
+//        FileWriter locFile = null;
+//        try{
+//            locFile = new FileWriter("locations.txt");
+//            for(Location location : locations.values()){
+//                locFile.write(location.getLocationID() + "," + location.getDescription() + "\n");
+//            }
+//            locFile.close();
+//        } finally {
+//            System.out.println("in finally block");
+//            if(locFile != null){
+//                System.out.println("Attempting to close locfile");
+//                locFile.close();
+//            }
+//        }
+    }
 
     static {
         Map<String, Integer> tempExit = new HashMap<String, Integer>();
