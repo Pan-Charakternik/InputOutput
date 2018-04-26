@@ -33,7 +33,6 @@ public class Main {
             if(loc == 0) {
                 break;
             }
-
             Map<String, Integer> exits = locations.get(loc).getExits();
             System.out.print("Available exits are ");
             for(String exit: exits.keySet()) {
